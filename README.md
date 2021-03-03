@@ -15,13 +15,13 @@ Stroke the mood of the day
 [2.Logo](#logo)    
 [3.Version](#version)    
 [4.Folder](#folder)  
-[5.Reference](#reference)
-[6.개인정보 처리방침](#개인정보 처리방침)
+[5.Reference](#reference)  
+[6.개인정보 처리방침](#개인정보 처리방침)  
 
 
 </details>
     
-@copyright : MInwoo Lee, Semmi Park, Boram, Kim, Mingyu Yoo
+@copyright : MInwoo Lee, Semi Park, Boram Kim, Mingyu Yoo
     
 ## Demo video
 
