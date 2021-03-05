@@ -199,4 +199,15 @@ https://sansanji.tistory.com/entry/Xcode에서-앱스토어-등록-배포-하기
 
 5. 개인정보에 대한 접근 제한  
 개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.  
+---
+# 2021.03.04 "Review"
+#### The name of the app in the App Store and the name of the downloaded app are different.  
+### How to solve it
+=> Change the display name of the app to ‘쓰담’
+
+# 2021.03.05 " Ready for Sale, Version 1.0"  
+#### The following app has been approved for the App Store:  
+App Name: 쓰담  
+App Version Number: 1.0  
+App Type: iOS  
 
