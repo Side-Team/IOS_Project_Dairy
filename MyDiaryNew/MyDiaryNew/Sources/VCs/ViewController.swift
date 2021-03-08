@@ -56,7 +56,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         dateFormatter.locale = Locale(identifier: "ko")
         current_date_string = dateFormatter.string(from: Date())
         
-        
         // For when use button with other buttons on same view
         view.addSubview(myCalendar)
         myCalendar.addSubview(myCalendar.calendarHeaderView)
@@ -70,8 +69,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         // DB select action
         readValues()
 
-        
-        
         myCalendar.register(FSCalendarCell.self, forCellReuseIdentifier: "CELL")
             }
 
@@ -91,7 +88,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     
     // Reload data when back from other view
     override func viewWillAppear(_ animated: Bool) {
-        
         
         // DB select action
         readValues()
@@ -114,11 +110,17 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             let onAction = UIAlertAction(title: "네, 알겠습니다.", style: UIAlertAction.Style.destructive, handler: nil)
 
             shouldSelectAlert.addAction(onAction)
-            present(shouldSelectAlert, animated: true, completion: nil) // alert실행
+            present(shouldSelectAlert, animated: true, completion: nil)
         }else{
-            // Move to next view
+            dateFormatter.dateFormat = "YYYY-MM-dd"
+            dateFormatter.locale = Locale(identifier: "ko")
+            let date = dateFormatter.date(from: selectDate)!
+      
             selectDate_EmotionView = selectDate
             self.performSegue(withIdentifier: "moveSelectEmo", sender: self)
+            
+            self.myCalendar.deselect(date)
+            selectDate = ""
         }
     }
     
@@ -181,11 +183,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         dateFormatter.dateFormat = "YYYY-MM-dd"
         selectDate = dateFormatter.string(from: date)
        
-        
         // When the date is registered
         if self.eventDates.contains(date){
             strDate = selectDate
             self.performSegue(withIdentifier: "MoveDetailDirect", sender: self)
+            self.myCalendar.deselect(date)
+            selectDate = ""
         }
     }
     
@@ -198,8 +201,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
 
         if self.eventDates.contains(date){
-     
-
             return UIImage(named: imageFileNames[eventDates.firstIndex(of: date)!])
         }
         return nil
@@ -224,8 +225,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
               let errmsg = String(cString: sqlite3_errmsg(db)!)
               print("error creating table : \(errmsg)")
           }
-        
-        
     }
     
     // DB SELECT Action
@@ -248,16 +247,13 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             let cImageFileName = String(cString: sqlite3_column_text(stmt, 3))
             let cInsertDate = String(cString: sqlite3_column_text(stmt, 4))
             dateFormatter.locale = Locale(identifier: "ko")
-            
-            
+        
             tempImageFileNames.append(changeCalendarImageName(beforename : cImageFileName))
             tempDate.append(dateFormatter.date(from: cInsertDate)!)
             
             eventDates = tempDate
             imageFileNames = tempImageFileNames
         }
- 
-
     }
     
     // Find to simulator path
@@ -297,8 +293,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             return ""
         }
     }
-    
-    
 }
 
 
