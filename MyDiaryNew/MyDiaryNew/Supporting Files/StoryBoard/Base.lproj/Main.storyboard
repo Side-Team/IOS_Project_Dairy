@@ -35,7 +35,9 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hn-Av-Y88">
                                 <rect key="frame" x="141" y="415" width="108" height="66"/>
-                                <state key="normal" title="입력"/>
+                                <state key="normal" title="입력">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="btnCheck:" destination="mOS-4y-kra" eventType="touchUpInside" id="VjF-zI-fG4"/>
                                 </connections>
@@ -109,7 +111,7 @@
                                 <rect key="frame" x="16" y="242" width="358" height="360"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rzM-kE-HU6">
-                                        <rect key="frame" x="0.0" y="0.0" width="358" height="206"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="205.33333333333334"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aNH-hl-99w">
                                                 <rect key="frame" x="0.0" y="0.0" width="358" height="50"/>
@@ -126,13 +128,13 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iUS-v6-3hG">
-                                                <rect key="frame" x="0.0" y="50" width="358" height="156"/>
+                                                <rect key="frame" x="0.0" y="50" width="358" height="155.33333333333334"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuB-Fh-x40">
-                                                        <rect key="frame" x="0.0" y="0.0" width="358" height="156"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="358" height="155.33333333333334"/>
                                                         <string key="text">비밀번호를 입력해주세요
 (최소 4글자 ~ 최대 8글자)</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -141,7 +143,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2Vs-rO-Eze">
-                                        <rect key="frame" x="0.0" y="206" width="358" height="40"/>
+                                        <rect key="frame" x="0.0" y="205.33333333333331" width="358" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WiO-8p-C9v">
                                                 <rect key="frame" x="0.0" y="0.0" width="358" height="40"/>
@@ -156,12 +158,14 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TMQ-ol-w21">
-                                        <rect key="frame" x="0.0" y="246" width="358" height="114"/>
+                                        <rect key="frame" x="0.0" y="245.33333333333329" width="358" height="114.66666666666666"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzQ-IS-dbg">
-                                                <rect key="frame" x="0.0" y="0.0" width="358" height="114"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <state key="normal" title="등록"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="358" height="114.66666666666667"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="등록">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="btnUpdatePassword:" destination="Jbk-RL-JZH" eventType="touchUpInside" id="lCn-C4-gnR"/>
                                                 </connections>
@@ -201,13 +205,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOL-8c-wQQ" customClass="FSCalendar">
-                                <rect key="frame" x="16" y="88" width="358" height="567"/>
+                                <rect key="frame" x="16" y="88" width="358" height="572"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGx-bE-mHj">
-                                <rect key="frame" x="180" y="701" width="30" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="+"/>
+                                <rect key="frame" x="180" y="706" width="30" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="btnNew:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WNY-Zv-hrE"/>
                                 </connections>
@@ -226,6 +232,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="DC0-Fq-kwm">
                         <barButtonItem key="rightBarButtonItem" title="설정" id="tfR-4c-o5j">
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="SYk-ha-mH9" kind="show" identifier="" id="IOl-sN-m1B"/>
                             </connections>
@@ -328,8 +335,10 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="OSY-Sf-xvm"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="선택"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="선택">
+                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="btnSelectDone:" destination="boM-lf-Chz" eventType="touchUpInside" id="szO-n0-0ji"/>
                                             <segue destination="4vI-Fo-09e" kind="show" id="c4v-aJ-HUz"/>
@@ -468,8 +477,10 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdD-40-QJP">
                                                         <rect key="frame" x="0.0" y="0.0" width="358" height="100"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                        <state key="normal" title="등록"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="등록">
+                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="btnInsert:" destination="4vI-Fo-09e" eventType="touchUpInside" id="8qM-Do-2sM"/>
                                                         </connections>
@@ -745,7 +756,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-uA-rpE">
                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="100"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <state key="normal" title="삭제">
                                                             <color key="titleColor" systemColor="systemPinkColor"/>
                                                         </state>
@@ -755,8 +766,10 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCv-fK-eCo">
                                                         <rect key="frame" x="179" y="0.0" width="179" height="100"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                        <state key="normal" title="수정"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="수정">
+                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="btnUpdate:" destination="jSn-8D-8V2" eventType="touchUpInside" id="qfe-9I-gtl"/>
                                                         </connections>
@@ -931,6 +944,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n6x-yG-Rkr">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -943,7 +957,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FxR-W4-8c0"/>
+        <segue reference="D7z-QE-jOc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="beige.png" width="200" height="200"/>
