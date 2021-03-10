@@ -59,6 +59,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblTitle" destination="fmM-Vw-vCy" id="J7T-JJ-D2u"/>
+                        <outlet property="outlet_BtnCheck" destination="5Hn-Av-Y88" id="Gti-2Z-Dip"/>
                         <outlet property="txtPassword" destination="vUM-e1-Nhr" id="Tta-Fz-3x5"/>
                     </connections>
                 </viewController>
@@ -183,10 +185,17 @@
                             <constraint firstItem="wHR-lB-lsy" firstAttribute="top" secondItem="HDX-WR-tzA" secondAttribute="top" constant="154" id="gFj-98-Fuy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sIl-Ic-W49"/>
+                    <navigationItem key="navigationItem" id="sIl-Ic-W49">
+                        <barButtonItem key="rightBarButtonItem" title="이메일 변경" id="fYa-Gz-GTN">
+                            <connections>
+                                <action selector="btnUpdateEmailAddress:" destination="Jbk-RL-JZH" id="wlC-NF-WTg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btnUpdate" destination="FzQ-IS-dbg" id="9X3-zG-icw"/>
                         <outlet property="lblText" destination="fuB-Fh-x40" id="EWh-Zs-RUG"/>
+                        <outlet property="outlet_BtnUpdateEmailAddress" destination="fYa-Gz-GTN" id="WWv-zQ-Cyk"/>
                         <outlet property="swOnOff" destination="Mk2-p2-9Zd" id="X0V-Nc-Sbw"/>
                         <outlet property="txtPassword" destination="WiO-8p-C9v" id="U0C-Ko-Dwd"/>
                     </connections>

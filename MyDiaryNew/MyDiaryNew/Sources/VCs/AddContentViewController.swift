@@ -110,9 +110,6 @@ class AddContentViewController: UIViewController, UITextViewDelegate, UITextFiel
         }
         
         showAlert(value: 1)
-        
-        
-        
     }
     
     // Show Alert

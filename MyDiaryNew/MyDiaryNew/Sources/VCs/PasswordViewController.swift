@@ -9,6 +9,7 @@ import UIKit
 
 class PasswordViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var outlet_BtnUpdateEmailAddress: UIBarButtonItem!
     @IBOutlet weak var swOnOff: UISwitch!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var lblText: UILabel!
@@ -21,14 +22,13 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         txtPassword.delegate = self
-        
-        checkSwitchValue()
-        constraintSwitch()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {        
         checkSwitchValue()
         constraintSwitch()
+
     }
 
     // Switch for using password lock
@@ -36,9 +36,19 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         constraintSwitch()
     }
     
+    // Button for changing email address
+    @IBAction func btnUpdateEmailAddress(_ sender: UIBarButtonItem) {
+        registerEmail()
+    }
+    
     // Button when change password
     @IBAction func btnUpdatePassword(_ sender: UIButton) {
-        checkPassword()
+        if UserDefaults.standard.string(forKey: "authEmail") == nil{
+            registerEmail()
+        }else{
+            checkPassword()
+        }
+        
     }
     
     // to limit minimum and maximum input characters
@@ -58,8 +68,10 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
     
     // Exception handling for incorrect password
     func checkPassword(){
-        var alert = UIAlertController(title: "알림", message: "비밀번호를 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
-        var okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
+        var alert = UIAlertController(title: "알림", message: "4~8글자의 비밀번호를 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+        var okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: { [self]ACTION in
+            txtPassword.text = ""
+        })
         
         if txtPassword.text!.isEmpty == true{
             
@@ -74,9 +86,11 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
                 self.navigationController?.popViewController(animated: true)
             })
             UserDefaults.standard.set(self.txtPassword.text!, forKey: "password")
+            
         }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
+        
     }
     
     // For constraint when on and off switch
@@ -84,6 +98,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         if swOnOff.isOn == false{
             UserDefaults.standard.set("false", forKey: "switchValue")
             txtPassword.isEnabled = false
+            txtPassword.placeholder = ""
             btnUpdate.isEnabled = false
             lblText.text = "비밀번호 OFF"
         }else{
@@ -94,27 +109,80 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
                 btnUpdate.isEnabled = true
                 lblText.text = "비밀번호 ON"
             }else{
-                
                 txtPassword.isEnabled = true
                 btnUpdate.isEnabled = true
                 lblText.text = "비밀번호를 입력해주세요\n(4자리 ~ 8자리)"
                 
+                if UserDefaults.standard.string(forKey: "authEmail") == nil{
+                    outlet_BtnUpdateEmailAddress.isEnabled = false
+                    txtPassword.placeholder = "먼저 등록버튼을 눌러 이메일을 등록해주세요."
+                    txtPassword.isEnabled = false
+                }
+                
             }
         }
+        
+        
     }
     
     // Check value when switch on and off
     func checkSwitchValue(){
-        
         if let switchValue = UserDefaults.standard.string(forKey: "switchValue"){
             
             if switchValue == "true"{
-                
                 swOnOff.isOn = true
             }else{
-                
                 swOnOff.isOn = false
             }
         }
+    }
+    
+    // Email settings to receive authentication mail
+    func registerEmail(){
+        
+        let alert = UIAlertController(title: "이메일 확인", message: "인증번호를 받을 이메일을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField { (myTextField) in
+        myTextField.placeholder = "ex)ssdam@naver.com"
+        myTextField.textAlignment = .center
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: {[self]ACTION in
+            
+            let result = isValidEmail(testStr: alert.textFields![0].text!)
+            
+            if result != true{
+                let invalidEmailAlert = UIAlertController(title: "이메일 형식 오류", message: "유효하지 않은 이메일 형식입니다.\n다시 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+                let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: {[self]ACTION in
+                    registerEmail()
+                })
+                
+                invalidEmailAlert.addAction(okAction)
+                present(invalidEmailAlert, animated: true, completion: nil)
+            }else{
+                UserDefaults.standard.set(alert.textFields![0].text!, forKey: "authEmail")
+                
+                let okAlert = UIAlertController(title: "이메일 설정 성공", message: "\(alert.textFields![0].text!)\n이메일이 등록되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: {[self]ACTION in
+                    outlet_BtnUpdateEmailAddress.isEnabled = true
+                    txtPassword.isEnabled = true
+                    txtPassword.placeholder = ""
+                })
+                                
+                okAlert.addAction(okAction)
+                present(okAlert, animated: true, completion: nil)
+            }
+        })
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // Verify that this is a valid email format
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
 }
