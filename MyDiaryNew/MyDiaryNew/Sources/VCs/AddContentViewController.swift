@@ -37,9 +37,7 @@ class AddContentViewController: UIViewController, UITextViewDelegate, UITextFiel
 
         // Connect DB
         connectDB()
-        
-        
-        
+
         viewDidLayoutSubviews()
     }
  
