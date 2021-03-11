@@ -225,3 +225,6 @@ App Type: iOS
 - You can authenticate your email up to three times a day.
 - If the authentication is successful, the password will clear and the password function will be turned off.
 
+#### 3. When you change your email address or password
+- When you change your email address or password, you must enter your existing password.
+
