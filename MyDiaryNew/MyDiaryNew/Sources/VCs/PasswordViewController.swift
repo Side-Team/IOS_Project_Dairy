@@ -68,7 +68,7 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(cancelAction)
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
-        } 
+        }
     }
     
     // Button when change password
@@ -219,17 +219,21 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
                 invalidEmailAlert.addAction(okAction)
                 present(invalidEmailAlert, animated: true, completion: nil)
             }else{
-                UserDefaults.standard.set(alert.textFields![0].text!, forKey: "authEmail")
                 
                 let okAlert = UIAlertController(title: "이메일 설정 성공", message: "\(alert.textFields![0].text!)\n이메일이 등록되었습니다.", preferredStyle: UIAlertController.Style.alert)
                 let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: {[self]ACTION in
                     outlet_BtnUpdateEmailAddress.isEnabled = true
                     txtPassword.isEnabled = true
                     txtPassword.placeholder = ""
-                    lblText.text = "비밀번호를 등록해주세요\n(4자리 ~ 8자리)"
+                    
+                    if UserDefaults.standard.string(forKey: "password") == nil{
+                        lblText.text = "비밀번호를 등록해주세요\n(4자리 ~ 8자리)"
+                    }
                     lblText.textColor = .black
                 })
-                                
+                
+                UserDefaults.standard.set(alert.textFields![0].text!, forKey: "authEmail")
+           
                 okAlert.addAction(okAction)
                 present(okAlert, animated: true, completion: nil)
             }

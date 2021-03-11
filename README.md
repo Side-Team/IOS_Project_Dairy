@@ -211,3 +211,17 @@ App Name: 쓰담
 App Version Number: 1.0  
 App Type: iOS  
 
+# 2021.03.11 "Solve issue & Add function"
+## Solve issue
+#### 1. Solving the problem of having two articles registered on a single day
+
+## Add function
+#### 1. Register an email to receive the required authentication number when clearing a password
+- Enter the email to receive the authentication number when registering the password
+- You can change your email address through the '이메일 변경' button in the upper right corner.
+
+#### 2. Clear password
+- If the password is incorrect 5 times, you can clear the password through email authentication.
+- You can authenticate your email up to three times a day.
+- If the authentication is successful, the password will clear and the password function will be turned off.
+
