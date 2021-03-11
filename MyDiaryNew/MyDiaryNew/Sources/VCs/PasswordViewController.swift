@@ -38,7 +38,37 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
     
     // Button for changing email address
     @IBAction func btnUpdateEmailAddress(_ sender: UIBarButtonItem) {
-        registerEmail()
+        
+        if UserDefaults.standard.string(forKey: "password") == nil{
+            let alert = UIAlertController(title: "알림", message: "먼저 비밀번호를 등록해주세요", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
+            
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: "비밀번호 확인", message: "비밀번호를 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+            alert.addTextField { (myTextField) in
+            myTextField.textAlignment = .center
+            myTextField.keyboardType = .numberPad
+            myTextField.isSecureTextEntry = true
+            }
+            let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: { [self]ACTION in
+                if alert.textFields![0].text! != UserDefaults.standard.string(forKey: "password"){
+                    let failAlert = UIAlertController(title: "알림", message: "등록된 비밀번호가 아닙니다.", preferredStyle: UIAlertController.Style.alert)
+                    let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
+                    
+                    failAlert.addAction(okAction)
+                    present(failAlert, animated: true, completion: nil)
+                }else{
+                    registerEmail()
+                }
+            })
+            let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        } 
     }
     
     // Button when change password
@@ -46,7 +76,32 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
         if UserDefaults.standard.string(forKey: "authEmail") == nil{
             registerEmail()
         }else{
-            checkPassword()
+            if UserDefaults.standard.string(forKey: "password") != nil{
+                let alert = UIAlertController(title: "비밀번호 확인", message: "기존 비밀번호를 입력해주세요", preferredStyle: UIAlertController.Style.alert)
+                alert.addTextField(configurationHandler: {(myTextField) in
+                myTextField.keyboardType = .numberPad
+                myTextField.isSecureTextEntry = true
+                })
+                let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: {[self]ACTION in
+                    if UserDefaults.standard.string(forKey: "password") != alert.textFields![0].text!{
+                        let failAlert = UIAlertController(title: "알림", message: "등록된 비밀번호와 다릅니다.", preferredStyle: UIAlertController.Style.alert)
+                        let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
+                
+                        failAlert.addAction(okAction)
+                        present(failAlert, animated: true, completion: nil)
+                    }else{
+                        checkPassword()
+                    }
+                })
+                let cancelAction = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel, handler: nil)
+                
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                
+                present(alert, animated: true, completion: nil)
+            }else{
+                checkPassword()
+            }
         }
         
     }
@@ -115,7 +170,11 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
                 
                 if UserDefaults.standard.string(forKey: "authEmail") == nil{
                     outlet_BtnUpdateEmailAddress.isEnabled = false
-                    txtPassword.placeholder = "먼저 등록버튼을 눌러 이메일을 등록해주세요."
+                    lblText.textColor = .lightGray
+                    let attributedStr = NSMutableAttributedString(string: "등록버튼을 눌러 이메일을 입력해주세요")
+                    attributedStr.addAttribute(.foregroundColor, value: UIColor.black, range: ("등록버튼을 눌러 이메일을 입력해주세요" as NSString).range(of: "등록"))
+                    
+                    lblText.attributedText = attributedStr
                     txtPassword.isEnabled = false
                 }
                 
@@ -167,6 +226,8 @@ class PasswordViewController: UIViewController, UITextFieldDelegate {
                     outlet_BtnUpdateEmailAddress.isEnabled = true
                     txtPassword.isEnabled = true
                     txtPassword.placeholder = ""
+                    lblText.text = "비밀번호를 등록해주세요\n(4자리 ~ 8자리)"
+                    lblText.textColor = .black
                 })
                                 
                 okAlert.addAction(okAction)

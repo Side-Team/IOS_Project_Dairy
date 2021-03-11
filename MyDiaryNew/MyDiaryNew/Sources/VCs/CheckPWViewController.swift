@@ -36,7 +36,7 @@ class CheckPWViewController: UIViewController {
         if incorrectPWCount > 5{
             emailAuth()
         }else{
-            let alert = UIAlertController(title: "알림", message: "올바른 비밀번호를 입력해주세요. (\(incorrectPWCount)/5)", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "알림", message: "정확한 비밀번호를 입력해주세요. (\(incorrectPWCount)/5)", preferredStyle: UIAlertController.Style.alert)
             let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
             let password = UserDefaults.standard.string(forKey: "password")!
             
@@ -66,13 +66,13 @@ class CheckPWViewController: UIViewController {
             lblTitle.text = "입력이 제한되었습니다"
             lblTitle.textColor = .red
             txtPassword.isEnabled = false
-            outlet_BtnCheck.setTitle("비밀번호 초기화", for: .normal)
+            outlet_BtnCheck.setTitle("비밀번호 삭제", for: .normal)
         }
     }
     
     // Email authentication required to find password
     func emailAuth(){
-        let today = NSDate() //현재 시각 구하기
+        let today = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: today as Date)
@@ -113,7 +113,7 @@ class CheckPWViewController: UIViewController {
                     }
                     resultMsg(title: "인증 실패", message: "잘못된 인증번호입니다.")
                 }else{
-                    resultMsg(title: "인증 성공", message: "비밀번호가 초기화되었습니다.")
+                    resultMsg(title: "인증 성공", message: "비밀번호가 삭제되었습니다.")
                 }
             })
             secondAlert.addAction(doneAction)
@@ -146,9 +146,9 @@ class CheckPWViewController: UIViewController {
     func sendEmail(userEmail : String, authValue : String){
         
         let smtp = SMTP(
-            hostname: "smtp.gmail.com", // SMTP server address
-            email: "ssdam.auth@gmail.com", // username to login
-            password: "ssdam1111" // password to login
+            hostname: "smtp.gmail.com",
+            email: "ssdam.auth@gmail.com",
+            password: "ssdam1111"
         )
 
         let mail_from = Mail.User(name: "쓰담", email: "ssdam.auth@gmail.com")
