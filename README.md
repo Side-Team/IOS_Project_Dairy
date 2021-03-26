@@ -228,3 +228,5 @@ App Type: iOS
 #### 3. When you change your email address or password
 - When you change your email address or password, you must enter your existing password.
 
+--- 
+# Preview
