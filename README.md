@@ -230,3 +230,17 @@ App Type: iOS
 
 --- 
 # Preview
+
+![쓰담dd 001](https://user-images.githubusercontent.com/75714852/112574280-4eb5a180-8e31-11eb-869a-e93ec8d6cb75.jpeg)
+![쓰담dd 002](https://user-images.githubusercontent.com/75714852/112574286-5117fb80-8e31-11eb-9a5a-768133bdeda3.jpeg)
+![쓰담dd 003](https://user-images.githubusercontent.com/75714852/112574287-51b09200-8e31-11eb-8db0-d58a99052b29.jpeg)
+![쓰담dd 004](https://user-images.githubusercontent.com/75714852/112574291-52e1bf00-8e31-11eb-8983-aad0f94e8071.jpeg)
+![쓰담dd 005](https://user-images.githubusercontent.com/75714852/112574293-5412ec00-8e31-11eb-9cb2-c7de657e401d.jpeg)
+![쓰담dd 006](https://user-images.githubusercontent.com/75714852/112574295-54ab8280-8e31-11eb-9956-fa6273c5a9e0.jpeg)
+![쓰담dd 007](https://user-images.githubusercontent.com/75714852/112574298-55dcaf80-8e31-11eb-806d-57b588e76430.jpeg)
+![쓰담dd 008](https://user-images.githubusercontent.com/75714852/112574300-55dcaf80-8e31-11eb-8b34-d8ca0e8ff48a.jpeg)
+![쓰담dd 009](https://user-images.githubusercontent.com/75714852/112574301-56754600-8e31-11eb-8215-54bfbe0681c0.jpeg)
+![쓰담dd 010](https://user-images.githubusercontent.com/75714852/112574303-570ddc80-8e31-11eb-832f-79ca2ba9e9f8.jpeg)
+![쓰담dd 011](https://user-images.githubusercontent.com/75714852/112574304-570ddc80-8e31-11eb-8faa-99d34836cda0.jpeg)
+![쓰담dd 012](https://user-images.githubusercontent.com/75714852/112574306-57a67300-8e31-11eb-92d1-10bb4dc151cf.jpeg)
+![쓰담dd 013](https://user-images.githubusercontent.com/75714852/112574307-583f0980-8e31-11eb-8fb2-a429fc4ba55e.jpeg)
